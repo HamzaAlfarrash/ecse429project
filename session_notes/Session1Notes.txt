@@ -1,0 +1,108 @@
+CHARTER
+-----------------------------------------------
+Identify capabilities and areas of potential instability of the “rest
+api todo list manager”.
+Identify documented and undocumented “rest api todo list manager”
+capabilities.
+For each capability create a script or small program to demonstrate
+the capability.
+Exercise each capability identified with data typical to the intended
+use of the application.
+
+Build
+-----------------------------------------------
+runTodoManagerRestAPI-1.5.5.jar
+
+Testing Environment
+-----------------------------------------------
+OS: Windows 11, 24H2
+
+Files
+-----------------------------------------------
+Session1Notes.txt
+
+START
+-----------------------------------------------
+Feb 27th, 2026 @ 13:45
+
+TESTERS
+--------------------
+Hamza Alfarrash, hamza.alfarrash@mail.mcgill.ca, 261017161
+
+DURATION
+-----------------------------------------------
+45 minutes
+
+NOTES
+-----------------------------------------------
+
+* Downloaded the jar file from the Github repository
+
+SESSION SUMMARY:
+-----------------------------------------------------------------
+Testing focused on verifying the CRUD lifecycle, header responses, 
+and query parameters. While the core functionality largely 
+aligns with documentation, several critical logic flaws and 
+undocumented behaviors were identified.
+
+KEY FINDINGS BY METHOD:
+-----------------------------------------------------------------
+[OPTIONS]
+Validated correctly for /todos and /todos/:id. The returned 
+headers provide an accurate list of supported methods.
+
+[GET]
+- Retrieval via ID, title, and doneStatus works as expected.
+- Data formats (JSON/XML) are handled correctly.
+- SEARCH LIMITATION: The 'description' filter requires an exact 
+  string match. It does not support partial matches or substrings, 
+  limiting the utility of the search function.
+
+[HEAD]
+Operates correctly for both JSON and XML; headers match the 
+expected GET response metadata.
+
+[POST]
+- Valid payloads create todos as expected.
+- Explicit ID assignment is correctly blocked.
+- BUG: When a POST fails (e.g., missing a required title), the 
+  internal ID counter still increments by two. This results in 
+  unnecessary gaps in the resource sequence.
+
+[PUT]
+- BEHAVIORAL RISK: Performing a PUT with a partial payload 
+  overwrites the entire resource. Fields not included in the 
+  request are reset to default values rather than preserved. 
+  This behavior is currently undocumented.
+
+[DELETE]
+Basic deletion functionality is operational. Follow-up GET 
+requests confirm the resource is successfully removed.
+
+
+IDENTIFIED CONCERNS & RISKS:
+-----------------------------------------------------------------
+1. DATA INTEGRITY (PUT): The "reset to default" behavior on partial 
+   updates can lead to accidental data loss. A PATCH method or 
+   clearer documentation is required.
+   
+2. SEQUENCING BUG (POST): The ID incrementation on failed requests 
+   suggests a lack of transaction atomicity in the backend.
+
+3. SEARCH USABILITY: The lack of partial matching for descriptions 
+   makes the API feel rigid for end-users.
+
+4. SECURITY EXPOSURE: The absence of an authentication layer 
+   is a high-risk factor, especially for endpoints that allow 
+   destructive actions or system-level commands.
+
+
+PROPOSED FUTURE TEST STEPS:
+-----------------------------------------------------------------
+* Audit response headers for security-standard compliance.
+* Test boundary limits for title and description string lengths.
+* Investigate relationship stability when linking/unlinking 
+  tasks to todos.
+* Validate API behavior under high-concurrency scenarios.
+
+------------------------ END OF TESTING REPORT --------------------------
