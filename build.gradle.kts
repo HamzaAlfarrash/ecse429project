@@ -16,12 +16,6 @@ dependencies {
     testImplementation("org.json:json:20240303")
 }
 
-sourceSets {
-    test {
-        java.srcDirs("unitTest")
-    }
-}
-
 tasks.test {
     useJUnitPlatform()
 }
