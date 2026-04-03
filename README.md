@@ -24,3 +24,25 @@ Hamza Alfarrash - 261017161
 
 [Report PDF File](https://github.com/HamzaAlfarrash/ecse429project/blob/main/ECSE429_Report2.pdf)
 
+## Part C
+
+[Part C Overview](https://github.com/HamzaAlfarrash/ecse429project/tree/main/part_c)
+
+[Performance Runner Source](https://github.com/HamzaAlfarrash/ecse429project/tree/main/src/perfTest/java/performance)
+
+[Static Analysis Workflow](https://github.com/HamzaAlfarrash/ecse429project/tree/main/part_c/static-analysis)
+
+### Running Part C
+
+Performance experiments:
+
+```bash
+./gradlew perfTest
+```
+
+Static analysis setup and SonarQube run:
+
+```bash
+./scripts/setup_thingifier_source.sh
+./scripts/run_sonarqube_analysis.sh
+```

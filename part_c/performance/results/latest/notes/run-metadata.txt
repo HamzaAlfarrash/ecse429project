@@ -1,0 +1,6 @@
+Part C Todo Performance Run
+timestamp=2026-04-03T18:20:14.628329Z
+base_uri=http://localhost:4567
+iterations=5
+tiers=10,50,100,250,500,1000
+seed=4292026
