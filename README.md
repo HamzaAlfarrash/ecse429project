@@ -32,6 +32,9 @@ Hamza Alfarrash - 261017161
 
 [Static Analysis Workflow](https://github.com/HamzaAlfarrash/ecse429project/tree/main/part_c/static-analysis)
 
+[Performance Test Suite Video](https://drive.google.com/file/d/1uNM9JDggrev0NLAlaBb0m67iF1jSRHlT/view?usp=sharing)
+
+
 ### Running Part C
 
 Performance experiments:
