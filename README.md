@@ -34,7 +34,7 @@ Hamza Alfarrash - 261017161
 
 [Performance Test Suite Video](https://drive.google.com/file/d/1uNM9JDggrev0NLAlaBb0m67iF1jSRHlT/view?usp=sharing)
 
-
+[Report PDF File](https://github.com/HamzaAlfarrash/ecse429project/blob/main/ECSE429_Report3.pdf)
 ### Running Part C
 
 Performance experiments:
